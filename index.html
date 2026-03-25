@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description"
+        content="TaxaAdapter explores fine-grained image generation over the Tree of Life using vision taxonomy models.">
+        <meta name="keywords" content="TaxaAdapter, Fine-grained Image Generation, Tree of Life, Taxonomy Models">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>TaxaAdapter</title>
+        
+        <!-- Preconnect to external domains for faster loading -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+        <link rel="preconnect" href="https://cdn.jsdelivr.net">
+        <link rel="preconnect" href="https://unpkg.com">
+        <link rel="preconnect" href="https://www.w3counter.com">
+        <link rel="preconnect" href="https://www.googletagmanager.com">
+        
+        <!-- Analytics scripts - defer to not block rendering -->
+        <script defer src="https://www.w3counter.com/tracker.js?id=155741"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+        dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-PYVRSFMDRL');
+        </script>
+
+        <!-- Optimized font loading with font-display: swap -->
+        <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;700&family=Noto+Sans:wght@400;700&family=Castoro&display=swap" rel="stylesheet">
+        
+        <!-- CSS - removed duplicate Font Awesome, using CDN only -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="./static/css/bulma.min.css">
+        <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+        <link rel="stylesheet" href="./static/css/index.css">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+        <!-- Scripts - defer/async for non-blocking loading -->
+        <script defer src="./static/js/fontawesome.all.min.js"></script>
+        <script defer src="./static/js/bulma-carousel.min.js"></script>
+        <script defer src="./static/js/index.js"></script>
+    </head>
+
+    <body>
+        <!-- Navigation Bar -->
+        <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="#top">
+                    <strong class="is-size-4">TaxaAdapter</strong>
+                    </a>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item" href="#abstract">Abstract</a>
+                        <a class="navbar-item" href="#method">Method</a>
+                        <a class="navbar-item" href="#results">Results</a>
+                        <a class="navbar-item" href="#BibTeX">BibTeX</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero is-light" id="top">
+            <div class="hero-body">
+              <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                  <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title" data-aos="fade-up">TaxaAdapter: Vision Taxonomy Models are Key to Fine-grained Image Generation over the Tree of Life</h1>
+                    <div class="is-size-5 publication-authors" data-aos="fade-up" data-aos-delay="100">
+                      <span class="author-block"><a href="https://mridulk97.github.io/" target="_blank" rel="noopener">Mridul Khurana</a><sup>1</sup>,</span>
+                      <span class="author-block"><a href="https://7amin.github.io/" target="_blank" rel="noopener">Amin Karimi Monsefi</a><sup>2</sup>,</span>
+                      <span class="author-block"><a href="https://justinhylee135.github.io/" target="_blank" rel="noopener">Justin Lee</a><sup>2</sup>,</span>
+                      <span class="author-block"><a href="https://sawhney-medha.github.io/" target="_blank" rel="noopener">Medha Sawhney</a><sup>1</sup>,</span>
+                      <span class="author-block"><a href="https://davidcarlyn.wordpress.com/" target="_blank" rel="noopener">David Carlyn</a><sup>2</sup>,</span>
+                      <span class="author-block"><a href="https://juliachae.github.io/" target="_blank" rel="noopener">Julia Chae</a><sup>3</sup>,</span>
+                      <span class="author-block"><a href="https://vimar-gu.github.io/" target="_blank" rel="noopener">Jianyang Gu</a><sup>2</sup>,</span>
+                      <span class="author-block"><a href="https://cse.osu.edu/people/ramnath.6" target="_blank" rel="noopener">Rajiv Ramnath</a><sup>2</sup>,</span>
+                      <span class="author-block"><a href="https://beerys.github.io/" target="_blank" rel="noopener">Sara Beery</a><sup>3</sup>,</span>
+                      <span class="author-block"><a href="https://sites.google.com/view/wei-lun-harry-chao/home" target="_blank" rel="noopener">Wei-Lun Chao</a><sup>4</sup>,</span>
+                      <span class="author-block"><a href="https://anujkarpatne.github.io/" target="_blank" rel="noopener">Anuj Karpatne</a><sup>1</sup>,</span>
+                      <span class="author-block"><a href="https://czhang0528.github.io/" target="_blank" rel="noopener">Cheng Zhang</a><sup>5</sup></span>
+                    </div>
+          
+                    <div class="is-size-5 publication-authors" data-aos="fade-up" data-aos-delay="150">
+                      <span class="author-block"><sup>1</sup> Virginia Tech</span>
+                      <span class="author-block"><sup>2</sup> The Ohio State University</span>
+                      <span class="author-block"><sup>3</sup> MIT</span><br>
+                      <span class="author-block"><sup>4</sup> Boston University</span>
+                      <span class="author-block"><sup>5</sup> Texas A&amp;M University</span>
+                    </div>
+
+                    <div class="column has-text-centered" data-aos="fade-up" data-aos-delay="200">
+                        <div class="publication-links">
+      
+                          <span class="link-block">
+                            <a href="#"
+                               class="external-link button is-normal is-rounded is-dark">
+                              <span class="icon">
+                                  <i class="fas fa-file-pdf"></i>
+                              </span>
+                              <span>Paper (TBD)</span>
+                            </a>
+                          </span>
+      
+                          <span class="link-block">
+                            <a href="https://github.com/Imageomics/TaxaAdapter"
+                               class="external-link button is-normal is-rounded is-dark">
+                              <span class="icon">
+                                  <i class="fab fa-github"></i>
+                              </span>
+                              <span>Code</span>
+                              </a>
+                          </span>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="hero teaser" data-aos="fade-up">
+            <div class="container is-max-desktop">
+              <div class="hero-body">
+                <h4 class="subtitle">
+                    <br>
+                  <b>TL;DR</b> TaxaAdapter injects Vision Taxonomy Model embeddings into a frozen text-to-image diffusion model to improve
+                  species-identity fidelity while preserving flexible text control over pose, style, and background.
+                </h4>
+                <div class="container">
+                    <img src="./static/images/teaser.png" alt="TaxaAdapter Teaser" loading="lazy" />
+                    <br/>
+                    <p>
+                      We propose <strong>TaxaAdapter</strong> to inject VTM-derived embeddings into a frozen diffusion model to make fine-grained synthesis taxonomy-aware, enabling:
+                      (a) fine-grained species synthesis with accurate morphological details, 
+                      (b) diverse and high-fidelity trait synthesis, 
+                      (c) free-form text control, and 
+                      (d) strong out-of-distribution generalization.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section hero is-light" id="abstract" data-aos="fade-up">
+            <div class="container is-max-desktop">
+              <!-- Abstract. -->
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                  <h2 class="title is-3">Abstract</h2>
+                  <div class="content has-text-justified">
+                    <p>
+                      Accurately generating images across the Tree of Life is difficult: there are over 10M distinct species on Earth, many of which differ only by subtle visual traits. 
+                      Despite the remarkable progress in text-to-image synthesis, existing models often fail to capture the fine-grained visual cues that define species identity, even when their outputs appear photo-realistic. 
+                      To this end, we propose TaxaAdapter, a simple and lightweight approach that incorporates Vision Taxonomy Models (VTMs) such as BioCLIP to guide fine-grained species generation. 
+                      Our method injects VTM embeddings into a frozen text-to-image diffusion model, improving species-level fidelity while preserving flexible text control over attributes such as pose, style, and background. 
+                      Extensive experiments demonstrate that TaxaAdapter consistently improves morphology fidelity and species-identity accuracy over strong baselines, with a cleaner architecture and training recipe. 
+                      To better evaluate these improvements, we also introduce a multimodal Large Language Model-based metric that summarizes trait-level descriptions from generated and real images, 
+                      providing a more interpretable measure of morphological consistency. Beyond this, we observe that TaxaAdapter exhibits strong generalization capabilities, enabling species synthesis in challenging 
+                      regimes such as few-shot species with only a handful of training images and even species unseen during training. Overall, our results highlight that VTMs are a key ingredient for scalable, fine-grained species generation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </section>
+
+        <section class="section" id="method" data-aos="fade-up">
+            <div class="container is-max-desktop">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-12">
+                  <h2 class="title is-3">Method</h2>
+        
+                  <div class="content has-text-justified">
+                    <!--
+                    <p>
+                     Explain method
+                    </p>
+                  -->
+                    <div class="container">
+                      <img src="./static/images/framework.png" alt="TaxaAdapter Framework" loading="lazy" />
+                      <br />
+                    </div>
+        
+                    <p>
+                      TaxaAdapter pipeline overview. Given a taxonomic name
+                      (e.g., <code>Kingdom</code> &rarr; <code>Species</code>),
+                      we extract taxonomy-image aligned embeddings using a
+                      pre-trained vision taxonomy model (e.g., BioCLIP,
+                      BioTrove-CLIP, or TaxaBind) and obtain complementary text
+                      features from the frozen CLIP text encoder. The dual
+                      conditioning streams are fused through a decoupled
+                      cross-attention mechanism, where the taxonomy branch
+                      captures species-level traits and the text branch retains
+                      free-form control over contextual cues such as style,
+                      background, or pose. During training, we only update the
+                      projection and cross-attention layers, while the diffusion
+                      backbone remains frozen for efficient and stable
+                      adaptation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" data-aos="fade-up">
+            <div class="container is-max-desktop">
+                <h1 class="title is-3 has-text-centered">Trait Fidelity Evaluation</h1>
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-12">
+        
+                  <div class="content has-text-justified">
+                    <!--
+                    <p>
+                     Explain method
+                    </p>
+                  -->
+                    <div class="container">
+                      <img src="./static/images/mllm.png" alt="Trait Fidelity Evaluation" loading="lazy" />
+                      <br />
+                    </div>
+                    <p>
+                        Caption-based trait fidelity evaluation. We leverage an MLLM to generate trait captions for real and generated images, 
+                        summarize each set into a species-level trait description with an LLM, and compute text similarity between the two summaries. 
+                        Our metric provides an interpretable, trait-level measure of morphological fidelity that complements standard image metrics.
+                    </p>
+                </div>
+              </div>
+            </div>
+          </section>
+              
+        
+          <section class="section" id="results" data-aos="fade-up">
+            <div class="container is-max-desktop">
+                <h1 class="title is-3 has-text-centered">Qualitative Results</h1>
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-12">
+        
+                  <div class="content has-text-justified">
+                  <!-- <h4 class="title is-4 has-text-centered">Results on Tree-Of-Life-1M, iNaturalist and FishNet Datasets</h4> -->
+                    <div class="carousel-container">
+                      <!-- Start Carousel -->
+                      <div class="carousel">
+                        <div class="item">
+                          <figure class="image">
+                            <img src="./static/images/qualitative_tol.png" alt="Main Results - Slide 1" loading="lazy" />
+                            <figcaption class="has-text-centered mt-2">
+                              <h4 class="title is-5">Results on Tree-Of-Life-1M</h4>
+                            </figcaption>
+                          </figure>
+                        </div>
+                        <div class="item">
+                          <figure class="image">
+                            <img src="./static/images/qualitative_inat.png" alt="Main Results - Slide 2" loading="lazy" />
+                            <figcaption class="has-text-centered mt-2">
+                              <h4 class="title is-5">Results on iNaturalist</h4>
+                            </figcaption>
+                          </figure>
+                        </div>
+                        <div class="item">
+                          <figure class="image">
+                            <img src="./static/images/qualitative_fishnet.png" alt="Main Results - Slide 3" loading="lazy" />
+                            <figcaption class="has-text-centered mt-2">
+                              <h4 class="title is-5">Results on FishNet</h4>
+                            </figcaption>
+                          </figure>
+                        </div>
+                      </div>
+                      <!-- End Carousel -->
+                      <div class="carousel-navigation">
+                        <div class="carousel-nav-left">
+                          <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="carousel-nav-right">
+                          <i class="fas fa-chevron-right"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <p>
+                        Each row shows a different species spanning birds, mammals, insects, and reptiles. TaxaAdapter generates morphology-faithful images that align with 
+                        taxonomy-defining traits (e.g., texture patterns, body shape, coloration) while maintaining realistic textures and backgrounds. 
+                        Notably, in the Tree-of-Life-1M results, the first two rows illustrate two <strong>extremely similar species</strong> under the same <code>Genus</code>, 
+                        where subtle differences in white spotting patterns on bird wings (highlighted in yellow circles) are correctly captured.
+                    </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="section" data-aos="fade-up">
+            <div class="container is-max-desktop">
+                <h1 class="title is-3 has-text-centered">Generalization Capabilities of TaxaAdapter</h1>
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-12">
+        
+                  <div class="content has-text-justified">
+                    <!--
+                    <p>
+                     Explain method
+                    </p>
+                  -->
+                    <div class="container">
+                      <img src="./static/images/ablation.png" alt="Generalization Capabilities of TaxaAdapter" loading="lazy" />
+                      <br />
+                    </div>
+                    <ol class="alpha-paren-list">
+                      <li>
+                        Free-form text prompting. Our dual-conditioning design allows flexible control over contextual attributes while preserving species-level morphology.
+                      </li>
+                      <li>
+                        Attention maps across different taxonomic tokens. TaxaAdapter gradually focuses on fine-grained information, from body structure to head at the <code>Genus</code> level, and to eyes and beak at the <code>Species</code> level.
+                      </li>
+                      <li>
+                        Results with different weighting factors (<code>λ</code>) during inference. Setting <code>λ = 0</code> relies solely on the CLIP text branch, while increasing <code>λ</code> strengthens the taxonomy-conditioned route. Intermediate values (for example, <code>λ = 0.5</code>) balance both conditions and yield morphology-faithful generations.
+                      </li>
+                    </ol>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="section" id="BibTeX" data-aos="fade-up">
+            <div class="container is-max-desktop content">
+              <h2 class="title is-3">BibTeX</h2>
+              <pre><code>
+                coming soon...
+              </code></pre>
+            </div>
+          </section>
+
+          <footer class="footer">
+            <div class="container">
+              <div class="content has-text-centered is-centered">
+                <a class="icon-link" href="https://github.com/mridulk97" class="external-link">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+              <div class="columns">
+                <div class="column is-8">
+                  <div class="content has-text-justified">
+                    <!-- <p>
+                      This website is licensed under a <a rel="license"
+                                                          href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                      Commons Attribution-ShareAlike 4.0 International License</a>.
+                    </p> -->
+                    <p>This page is adapted from <a
+                        href="https://github.com/nerfies/nerfies.github.io">this</a> implementation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+
+          <!-- Back to top button -->
+          <div class="back-to-top" id="back-to-top">
+            <a href="#top"><i class="fas fa-arrow-up"></i></a>
+          </div>
+
+          <!-- AOS Animation Library - defer loading -->
+          <script defer src="https://unpkg.com/aos@next/dist/aos.js"></script>
+          <script>
+            // Initialize AOS animations after library loads
+            window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                AOS.init({
+                  duration: 800,
+                  once: true
+                });
+              }
+            });
+
+            // Mobile menu toggle - vanilla JS (no jQuery needed)
+            document.addEventListener('DOMContentLoaded', () => {
+              const navbarBurgers = document.querySelectorAll('.navbar-burger');
+              if (navbarBurgers.length > 0) {
+                navbarBurgers.forEach(el => {
+                  el.addEventListener('click', () => {
+                    const target = el.dataset.target || el.getAttribute('aria-controls');
+                    const targetElement = document.getElementById(target) || el.parentElement.nextElementSibling;
+                    el.classList.toggle('is-active');
+                    if (targetElement) {
+                      targetElement.classList.toggle('is-active');
+                    }
+                  });
+                });
+              }
+
+              // Back to top button
+              const backToTopButton = document.getElementById('back-to-top');
+              if (backToTopButton) {
+                window.addEventListener('scroll', () => {
+                  if (window.pageYOffset > 300) {
+                    backToTopButton.style.display = 'flex';
+                  } else {
+                    backToTopButton.style.display = 'none';
+                  }
+                });
+              }
+            });
+          </script>
+    </body>
+</html>

@@ -1,0 +1,586 @@
+/* Optimize font rendering */
+body {
+  font-family: 'Noto Sans', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize image loading */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+:root {
+  --primary-color: #6200ee;
+  --secondary-color: #03dac6;
+  --dark-color: #121212;
+  --light-color: #f9f9f9;
+  --gradient-bg: linear-gradient(135deg, var(--primary-color), #9c27b0);
+}
+
+/* Header styles */
+.hero.is-light {
+  background: var(--light-color);
+}
+
+.hero-body {
+  padding: 3rem 1.5rem;
+}
+
+.publication-title {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+  background: var(--gradient-bg);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.publication-authors {
+  font-family: 'Google Sans', sans-serif;
+  margin-bottom: 1.5rem;
+}
+
+.publication-authors a {
+  color: var(--primary-color) !important;
+  transition: all 0.3s ease;
+}
+
+.publication-authors a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+/* Button styles */
+.button.is-dark {
+  background-color: var(--dark-color);
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.button.is-dark:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.link-block {
+  margin: 0 0.5rem;
+}
+
+/* Teaser section */
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  margin: 2rem auto;
+  overflow: hidden;
+}
+
+.teaser .hero-body {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+.teaser img {
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.teaser img:hover {
+  transform: scale(1.02);
+}
+
+/* Section styling */
+.section {
+  padding: 3rem 1.5rem;
+}
+
+.section.hero.is-light {
+  background: linear-gradient(to bottom, #ffffff, #f5f7ff);
+}
+
+.title.is-3 {
+  font-family: 'Google Sans', sans-serif;
+  color: var(--dark-color);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.title.is-3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--gradient-bg);
+  border-radius: 3px;
+}
+
+.title.is-4 {
+  font-family: 'Google Sans', sans-serif;
+  color: var(--dark-color);
+  margin-top: 2rem;
+}
+
+/* Image containers */
+.container img {
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transition: all 0.4s ease;
+}
+
+.container img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+}
+
+/* BibTeX section */
+#BibTeX {
+  background-color: #f5f7ff;
+}
+
+#BibTeX pre {
+  border-radius: 8px;
+  background-color: #2d2d2d;
+  color: #e6e6e6;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Footer styling */
+.footer {
+  background-color: var(--dark-color);
+  color: white;
+  padding: 3rem 1.5rem;
+}
+
+.footer .content {
+  color: #e6e6e6;
+}
+
+.footer a {
+  color: var(--secondary-color);
+}
+
+.footer .icon-link {
+  font-size: 25px;
+  color: white;
+  margin: 0 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.footer .icon-link:hover {
+  color: var(--secondary-color);
+  transform: scale(1.2);
+}
+
+/* Animation for content */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.content {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Ensure section content is visible even before AOS/JS initializes,
+   without interfering with other components like carousels */
+section[data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .title.is-1 {
+    font-size: 2rem;
+  }
+  
+  .hero-body {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Preserve existing classes but enhance them */
+.dnerf {
+  font-variant: small-caps;
+}
+
+.publication-venue {
+  color: #555;
+  width: fit-content;
+  font-weight: bold;
+}
+
+.publication-awards {
+  color: var(--primary-color);
+  width: fit-content;
+  font-weight: bolder;
+}
+
+.publication-video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.publication-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.results-carousel {
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.results-carousel .item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+/* Navigation bar styles */
+.navbar {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.navbar-item {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 500;
+  color: var(--dark-color);
+  transition: all 0.3s ease;
+}
+
+.navbar-item:hover {
+  color: var(--primary-color);
+  background-color: transparent !important;
+}
+
+/* Adjust top padding to account for fixed navbar */
+#top {
+  padding-top: 52px;
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 99;
+  transition: all 0.3s ease;
+}
+
+.back-to-top a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+.back-to-top:hover {
+  background-color: var(--dark-color);
+  transform: translateY(-5px);
+}
+
+/* Adjust for responsive design */
+@media screen and (max-width: 768px) {
+  .back-to-top {
+    width: 40px;
+    height: 40px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Section spacing */
+.section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* Image hover effects */
+.container img {
+  transition: all 0.4s ease;
+}
+
+.container img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+}
+
+/* Enhanced carousel styles */
+.carousel-container {
+  position: relative;
+  margin: 2rem 0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  background-color: white;
+}
+
+.carousel {
+  height: auto;
+  overflow: hidden;
+}
+
+.carousel .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 1rem;
+}
+
+.carousel .item figure.image {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel .item img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 500px;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  transition: none;
+}
+
+.carousel .item img:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.carousel figcaption {
+  background-color: white;
+  padding: 1.25rem;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.carousel figcaption p {
+  color: var(--dark-color);
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.carousel-navigation {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.carousel-nav-left,
+.carousel-nav-right {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+  transition: all 0.3s ease;
+  opacity: 1;
+  margin: 0 10px;
+  pointer-events: auto;
+}
+
+.carousel .slider-navigation-previous,
+.carousel .slider-navigation-next {
+  display: none !important;
+}
+
+.carousel-nav-left:hover,
+.carousel-nav-right:hover {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.carousel-nav-left i,
+.carousel-nav-right i {
+  font-size: 1.1rem;
+}
+
+/* Fix for carousel pagination */
+.slider-pagination {
+  bottom: -5px !important;
+  z-index: 20;
+}
+
+.slider-pagination .slider-page {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.slider-pagination .slider-page.is-active {
+  background-color: var(--primary-color);
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+/* Add animation for slide transitions */
+.slider-container .slider-item {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Make sure the mt-2 class is properly defined */
+.mt-2 {
+  margin-top: 0.75rem !important;
+}
+
+@media screen and (max-width: 768px) {
+  .carousel .item img {
+    max-height: 350px;
+  }
+  
+  .carousel figcaption p {
+    font-size: 0.85rem !important;
+  }
+  
+  .carousel-nav-left,
+  .carousel-nav-right {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Special styling for generation carousel */
+#generation-carousel .item figure.image {
+  padding: 0;
+  position: relative;
+}
+
+#generation-carousel .item img {
+  max-height: 550px;
+}
+
+#generation-carousel figcaption {
+  padding: 1.5rem;
+  background: white;
+  position: relative;
+}
+
+#generation-carousel figcaption .title.is-5 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+#generation-carousel figcaption p {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* Adjust spacing for bottom paragraph */
+.mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+@media screen and (max-width: 768px) {
+  #generation-carousel .item img {
+    max-height: 400px;
+  }
+  
+  #generation-carousel figcaption {
+    padding: 1rem;
+  }
+  
+  #generation-carousel figcaption p {
+    max-width: 95%;
+  }
+}
+
+/* Parenthesized alpha list style for ablation text: (a), (b), (c) */
+.alpha-paren-list {
+  list-style: none;
+  counter-reset: alpha-item;
+  margin: 0.75rem 0 0;
+  padding-left: 0;
+}
+
+.alpha-paren-list li {
+  counter-increment: alpha-item;
+  position: relative;
+  margin-bottom: 0.75rem;
+  padding-left: 2.2rem;
+  line-height: 1.6;
+}
+
+.alpha-paren-list li::before {
+  content: "(" counter(alpha-item, lower-alpha) ")";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 600;
+}
