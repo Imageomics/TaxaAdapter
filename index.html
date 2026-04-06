@@ -38,7 +38,6 @@
         <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
         <link rel="stylesheet" href="./static/css/index.css">
-        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
         <!-- Scripts - defer/async for non-blocking loading -->
         <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -76,8 +75,8 @@
               <div class="container is-max-desktop">
                 <div class="columns is-centered">
                   <div class="column has-text-centered">
-                    <h1 class="title is-1 publication-title" data-aos="fade-up">TaxaAdapter: Vision Taxonomy Models are Key to Fine-grained Image Generation over the Tree of Life</h1>
-                    <div class="is-size-5 publication-authors" data-aos="fade-up" data-aos-delay="100">
+                    <h1 class="title is-1 publication-title">TaxaAdapter: Vision Taxonomy Models are Key to Fine-grained Image Generation over the Tree of Life</h1>
+                    <div class="is-size-5 publication-authors">
                       <span class="author-block"><a href="https://mridulk97.github.io/" target="_blank" rel="noopener">Mridul Khurana</a><sup>1</sup>,</span>
                       <span class="author-block"><a href="https://7amin.github.io/" target="_blank" rel="noopener">Amin Karimi Monsefi</a><sup>2</sup>,</span>
                       <span class="author-block"><a href="https://justinhylee135.github.io/" target="_blank" rel="noopener">Justin Lee</a><sup>2</sup>,</span>
@@ -92,7 +91,7 @@
                       <span class="author-block"><a href="https://czhang0528.github.io/" target="_blank" rel="noopener">Cheng Zhang</a><sup>5</sup></span>
                     </div>
           
-                    <div class="is-size-5 publication-authors" data-aos="fade-up" data-aos-delay="150">
+                    <div class="is-size-5 publication-authors">
                       <span class="author-block"><sup>1</sup> Virginia Tech</span>
                       <span class="author-block"><sup>2</sup> The Ohio State University</span>
                       <span class="author-block"><sup>3</sup> MIT</span><br>
@@ -100,16 +99,18 @@
                       <span class="author-block"><sup>5</sup> Texas A&amp;M University</span>
                     </div>
 
-                    <div class="column has-text-centered" data-aos="fade-up" data-aos-delay="200">
+                    <div class="column has-text-centered">
                         <div class="publication-links">
       
                           <span class="link-block">
-                            <a href="#"
-                               class="external-link button is-normal is-rounded is-dark">
+                            <a href="https://arxiv.org/abs/2603.26128v1"
+                               class="external-link button is-normal is-rounded is-dark"
+                               target="_blank"
+                               rel="noopener">
                               <span class="icon">
                                   <i class="fas fa-file-pdf"></i>
                               </span>
-                              <span>Paper (TBD)</span>
+                              <span>arXiv</span>
                             </a>
                           </span>
       
@@ -130,7 +131,7 @@
           </div>
         </section>
 
-        <section class="hero teaser" data-aos="fade-up">
+        <section class="hero teaser">
             <div class="container is-max-desktop">
               <div class="hero-body">
                 <h4 class="subtitle">
@@ -152,7 +153,7 @@
             </div>
         </section>
 
-        <section class="section hero is-light" id="abstract" data-aos="fade-up">
+        <section class="section hero is-light" id="abstract">
             <div class="container is-max-desktop">
               <!-- Abstract. -->
               <div class="columns is-centered has-text-centered">
@@ -174,7 +175,7 @@
               </div>
         </section>
 
-        <section class="section" id="method" data-aos="fade-up">
+        <section class="section" id="method">
             <div class="container is-max-desktop">
               <div class="columns is-centered has-text-centered">
                 <div class="column is-12">
@@ -213,7 +214,7 @@
             </div>
           </section>
 
-          <section class="section" data-aos="fade-up">
+          <section class="section">
             <div class="container is-max-desktop">
                 <h1 class="title is-3 has-text-centered">Trait Fidelity Evaluation</h1>
               <div class="columns is-centered has-text-centered">
@@ -240,7 +241,7 @@
           </section>
               
         
-          <section class="section" id="results" data-aos="fade-up">
+          <section class="section" id="results">
             <div class="container is-max-desktop">
                 <h1 class="title is-3 has-text-centered">Qualitative Results</h1>
               <div class="columns is-centered has-text-centered">
@@ -298,7 +299,7 @@
           </section>
 
 
-          <section class="section" data-aos="fade-up">
+          <section class="section">
             <div class="container is-max-desktop">
                 <h1 class="title is-3 has-text-centered">Generalization Capabilities of TaxaAdapter</h1>
               <div class="columns is-centered has-text-centered">
@@ -331,7 +332,7 @@
           </section>
 
 
-          <section class="section" id="BibTeX" data-aos="fade-up">
+          <section class="section" id="BibTeX">
             <div class="container is-max-desktop content">
               <h2 class="title is-3">BibTeX</h2>
               <pre><code>
@@ -369,47 +370,5 @@
             <a href="#top"><i class="fas fa-arrow-up"></i></a>
           </div>
 
-          <!-- AOS Animation Library - defer loading -->
-          <script defer src="https://unpkg.com/aos@next/dist/aos.js"></script>
-          <script>
-            // Initialize AOS animations after library loads
-            window.addEventListener('load', function() {
-              if (typeof AOS !== 'undefined') {
-                AOS.init({
-                  duration: 800,
-                  once: true
-                });
-              }
-            });
-
-            // Mobile menu toggle - vanilla JS (no jQuery needed)
-            document.addEventListener('DOMContentLoaded', () => {
-              const navbarBurgers = document.querySelectorAll('.navbar-burger');
-              if (navbarBurgers.length > 0) {
-                navbarBurgers.forEach(el => {
-                  el.addEventListener('click', () => {
-                    const target = el.dataset.target || el.getAttribute('aria-controls');
-                    const targetElement = document.getElementById(target) || el.parentElement.nextElementSibling;
-                    el.classList.toggle('is-active');
-                    if (targetElement) {
-                      targetElement.classList.toggle('is-active');
-                    }
-                  });
-                });
-              }
-
-              // Back to top button
-              const backToTopButton = document.getElementById('back-to-top');
-              if (backToTopButton) {
-                window.addEventListener('scroll', () => {
-                  if (window.pageYOffset > 300) {
-                    backToTopButton.style.display = 'flex';
-                  } else {
-                    backToTopButton.style.display = 'none';
-                  }
-                });
-              }
-            });
-          </script>
     </body>
 </html>

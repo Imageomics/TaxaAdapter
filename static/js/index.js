@@ -1,7 +1,5 @@
 // Ensure our code runs after the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM fully loaded, initializing...');
-    
     // Check for click events on the navbar burger icon - vanilla JS
     const navbarBurgers = document.querySelectorAll(".navbar-burger");
     navbarBurgers.forEach(function(burger) {
@@ -37,14 +35,11 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 10);
     });
     
-    // Smooth scroll to top when back to top button is clicked
+    // Jump to top when the back-to-top button is clicked
     if (backToTopButton) {
       backToTopButton.addEventListener('click', function(e) {
         e.preventDefault();
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+        window.scrollTo(0, 0);
         return false;
       });
     }
@@ -82,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 50);
     });
 
-    // Smooth scroll for anchor links - vanilla JS
+    // Jump directly to anchor sections - vanilla JS
     const navbarItems = document.querySelectorAll('.navbar-item');
     navbarItems.forEach(function(item) {
       item.addEventListener('click', function(e) {
@@ -92,10 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
           const target = document.querySelector(hash);
           if (target) {
             const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 70;
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
+            window.scrollTo(0, targetPosition);
           }
         }
       });
@@ -113,36 +105,10 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     waitForCarousel();
-
-    // Add fade-in animation to images on scroll
-    const fadeInElements = document.querySelectorAll('.container img');
-    
-    const fadeInOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -100px 0px"
-    };
-    
-    const fadeInObserver = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-        entry.target.style.opacity = "1";
-        observer.unobserve(entry.target);
-      });
-    }, fadeInOptions);
-    
-    fadeInElements.forEach(image => {
-      image.style.opacity = "0";
-      image.style.transition = "opacity 0.8s ease-in-out";
-      fadeInObserver.observe(image);
-    });
 });
 
 // Function to initialize all carousels
 function initializeCarousels() {
-  console.log('Initializing carousels...');
-  
   // Initialize generation carousel with specific options
   var generationCarouselOptions = {
     slidesToScroll: 1,
@@ -180,13 +146,11 @@ function initializeCarousels() {
   try {
     // Safe initialization - check if elements exist
     if (document.querySelectorAll('.carousel:not(#generation-carousel)').length > 0) {
-      console.log('Initializing regular carousels');
       carousels = bulmaCarousel.attach('.carousel:not(#generation-carousel)', carouselOptions);
     }
     
     // Check if generation carousel exists
     if (document.getElementById('generation-carousel')) {
-      console.log('Initializing generation carousel');
       generationCarousel = bulmaCarousel.attach('#generation-carousel', generationCarouselOptions);
     }
     
@@ -241,16 +205,6 @@ function initializeCarousels() {
       });
     });
 
-    // Loop on each carousel initialized - check length first
-    if (carousels.length > 0) {
-      for(var i = 0; i < carousels.length; i++) {
-        if (carousels[i]) {
-          carousels[i].on('before:show', state => {
-            console.log(state);
-          });
-        }
-      }
-    }
   } catch (error) {
     console.error('Error initializing carousels:', error);
   }
