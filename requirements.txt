@@ -1,4 +1,4 @@
-diffusers==0.29.2
+diffusers==0.38.0
 accelerate==0.31.0
 safetensors==0.6.2
 open_clip_torch==3.1.0
